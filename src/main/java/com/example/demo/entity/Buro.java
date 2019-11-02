@@ -26,7 +26,7 @@ public class Buro {
     @Column
     @Digits(fraction = 0, integer = 9, message = "9 integer")
     private Integer phone;
-/*
+
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "buro")
-    private Set<Office> offices;*/
+    private Set<Office> offices;
 }

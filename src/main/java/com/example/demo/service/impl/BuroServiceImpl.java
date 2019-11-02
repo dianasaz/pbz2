@@ -4,10 +4,12 @@ import com.example.demo.entity.Buro;
 import com.example.demo.repository.BuroRepository;
 import com.example.demo.service.BuroService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class BuroServiceImpl implements BuroService {
     private final BuroRepository buroRepository;
 

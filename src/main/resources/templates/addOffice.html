@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/webjars/momentjs/2.24.0/moment.js"></script>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container pt-3">
+    <a class="btn btn-success pb-2" href="/">home</a>
+
+    <form class="form-horizontal" th:object="${office}" method="post">
+        <div class="form-group">
+            <label class="control-label col-2" for="address">Address:</label>
+            <div class="col-10">
+                <input type="text" class="form-control" id="address" th:field="*{office_address}" th:value="*{office_address} "
+                       placeholder="Enter address">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-offset-2 col-10">
+                <button type="submit" class="btn btn-success">Add</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
