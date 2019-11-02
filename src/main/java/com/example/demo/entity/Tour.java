@@ -19,8 +19,8 @@ public class Tour {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
-    @JoinColumn(name = "buro_id")
-    private Buro buro;
+    @JoinColumn(name = "office_id")
+    private Office office;
 
     @Column
     @Digits(fraction = 0, integer = 2, message = "max is 21")

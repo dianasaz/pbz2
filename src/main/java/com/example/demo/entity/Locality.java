@@ -15,7 +15,7 @@ public class Locality {
 
     @Column (unique = true)
     private String name;
-
+/*
     @OneToMany (fetch = FetchType.EAGER, mappedBy = "locality")
-    private Set<Hotel> hotels;
+    private Set<Hotel> hotels;*/
 }

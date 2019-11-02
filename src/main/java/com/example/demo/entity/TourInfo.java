@@ -1,12 +1,14 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 
 @Data
 @Entity
+@ToString
 @Table (name = "tour_info")
 public class TourInfo {
     @Id
@@ -24,8 +26,8 @@ public class TourInfo {
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
-    @JoinColumn(name = "locality_id")
-    private Locality locality;
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
 
     @Column (name = "departure_point")
     private String departurePoint;
