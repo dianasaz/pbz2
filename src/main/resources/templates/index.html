@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"><head>
+      xmlns:th="http://www.thymeleaf.org">
+<head>
     <title>Home page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,9 +12,26 @@
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="d-flex justify-content-center p-5">
-    <a href="/buro/add" class="btn btn-success m-1">add buro</a>
-    <a href="/watch/buro" class="btn btn-success m-1">see all buro</a>
+<div class="m-5">
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success pb-2" href="/">home</a>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="/watch/buro" class="btn btn-success m-1">see all buro</a>
+        <a href="/watch/office" class="btn btn-success m-1">see all office</a>
+        <a href="/watch/locality" class="btn btn-success m-1">see all locality</a>
+        <a href="/watch/hotel" class="btn btn-success m-1">see all hotels</a>
+        <a href="/watch/tour" class="btn btn-success m-1">see all tours</a>
+        <a href="/watch/tourInfo" class="btn btn-success m-1">see all tourInfoList</a>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="/buro/add" class="btn btn-success m-1">add buro</a>
+        <a href="/office/add" class="btn btn-success m-1">add office</a>
+        <a href="/locality/add" class="btn btn-success m-1">add locality</a>
+        <a href="/hotel/add" class="btn btn-success m-1">add hotel</a>
+        <a href="/tour/add" class="btn btn-success m-1">add tour</a>
+        <a href="/tourInfo/add" class="btn btn-success m-1">add tourInfo</a>
+    </div>
 </div>
 </body>
 </html>

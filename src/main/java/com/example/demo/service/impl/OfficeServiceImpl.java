@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.Buro;
 import com.example.demo.entity.Office;
 import com.example.demo.repository.OfficeRepository;
 import com.example.demo.service.OfficeService;
@@ -41,5 +42,10 @@ public class OfficeServiceImpl implements OfficeService {
     @Override
     public void deleteById(Integer id) {
         officeRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Office> findByBuro(Buro buro) {
+        return officeRepository.findByBuro(buro);
     }
 }

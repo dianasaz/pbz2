@@ -40,6 +40,11 @@ public class TourInfoRepositoryTest {
         office.setOffice_address("Address office");
         office.setId(officeRepository.save(office).getId());
 
+        Office office1 = new Office();
+        office1.setBuro(buro);
+        office1.setOffice_address("Address office 1");
+        office1.setId(officeRepository.save(office1).getId());
+
         Locality locality = new Locality();
         locality.setName("GE");
         locality.setId(localityRepository.save(locality).getId());
@@ -70,6 +75,7 @@ public class TourInfoRepositoryTest {
         tourInfo.setTransport(Transport.BUS);
         tourInfo.setId(tourInfoRepository.save(tourInfo).getId());
 
-        Assert.assertEquals(java.util.Optional.of(1), java.util.Optional.of(tourInfo.getId()));
+        //buroRepository.findBuroByName("Name");
+        Assert.assertEquals(2, officeRepository.findByBuro(buro).size());
     }
 }

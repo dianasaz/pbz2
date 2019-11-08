@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
+import java.util.List;
 
 @Data
 @Entity
@@ -32,6 +33,6 @@ public class Tour {
     @Enumerated(EnumType.STRING)
     private TourType tourType;
 
-
-
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TourInfo> tourInfoList;
 }

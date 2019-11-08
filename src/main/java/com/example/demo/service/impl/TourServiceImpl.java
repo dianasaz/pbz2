@@ -4,10 +4,12 @@ import com.example.demo.entity.Tour;
 import com.example.demo.repository.TourRepository;
 import com.example.demo.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TourServiceImpl implements TourService {
     private final TourRepository tourRepository;
 

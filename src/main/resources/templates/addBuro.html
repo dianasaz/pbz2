@@ -12,9 +12,10 @@
     <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container pt-3">
-    <a class="btn btn-success pb-2" href="/">home</a>
-
+<div class="m-5">
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success pb-2" href="/">home</a>
+    </div>
     <form class="form-horizontal" th:object="${buro}" method="post">
         <div class="form-group">
             <label class="control-label col-2" for="name">Name:</label>

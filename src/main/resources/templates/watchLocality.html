@@ -16,27 +16,21 @@
         <a class="btn btn-success pb-2" href="/">home</a>
     </div>
     <div class="d-flex justify-content-center mt-1">
-        <a class="btn btn-success pb-2" href="/buro/add">add buro</a>
+        <a class="btn btn-success pb-2" href="/locality/add">add locality</a>
     </div>
-    <h2>Buro</h2>
+    <h2>Locality</h2>
     <table class="table table-hover">
         <thead>
         <tr>
             <th>Name</th>
-            <th>Address</th>
-            <th>FIO</th>
-            <th>Phone</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="buro : ${buros}">
-            <td th:text="${buro.name}">name</td>
-            <td th:text="${buro.address}">address</td>
-            <td th:text="${buro.fio}">fio</td>
-            <td th:text="${buro.phone}">phone</td>
+        <tr th:each="loc : ${localities}">
+            <td th:text="${loc.name}">name</td>
             <td>
-                <a th:href="@{/buro/{id}/delete(id=${buro.id})}">delete</a>
-                <a th:href="@{/buro/{id}/update(id=${buro.id})}">update</a>
+                <a th:href="@{/locality/{id}/delete(id=${loc.id})}">delete</a>
+                <a th:href="@{/locality/{id}/update(id=${loc.id})}">update</a>
             </td>
         </tr>
         </tbody>

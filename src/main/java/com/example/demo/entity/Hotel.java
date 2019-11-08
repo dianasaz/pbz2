@@ -1,13 +1,16 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
+import java.util.List;
 
 @Data
+@ToString
 @Entity
 @Table(name = "hotel")
 public class Hotel {
@@ -24,10 +27,15 @@ public class Hotel {
     @DecimalMin("1")
     private Integer stars;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    @JoinColumn (name = "locality_id")
+            CascadeType.REFRESH
+    }, fetch = FetchType.LAZY)
+    @JoinColumn(name = "locality_id")
     private Locality locality;
+
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TourInfo> tourInfoList;
 }

@@ -1,24 +1,32 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
+@ToString
 @Entity
-@Table (name = "office")
+@Table(name = "office")
 public class Office {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
     private String office_address;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,
+    @ManyToOne(cascade = {
+            CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    @JoinColumn (name = "buro_id")
+            CascadeType.REFRESH
+    }, fetch = FetchType.LAZY)
+    @JoinColumn(name = "buro_id")
     private Buro buro;
+
+    @OneToMany(mappedBy = "office", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Tour> tours;
 }

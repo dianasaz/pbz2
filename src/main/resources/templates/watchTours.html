@@ -16,29 +16,28 @@
         <a class="btn btn-success pb-2" href="/">home</a>
     </div>
     <div class="d-flex justify-content-center mt-1">
-        <a class="btn btn-success pb-2" href="/buro/add">add buro</a>
+        <a class="btn btn-success pb-2" href="/tour/add">add tour</a>
     </div>
-    <h2>Buro</h2>
+    <h2>Tours</h2>
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>FIO</th>
-            <th>Phone</th>
+            <th>Type</th>
+            <th>Office</th>
+            <th>Nights</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="buro : ${buros}">
-            <td th:text="${buro.name}">name</td>
-            <td th:text="${buro.address}">address</td>
-            <td th:text="${buro.fio}">fio</td>
-            <td th:text="${buro.phone}">phone</td>
+        <tr th:each="tour : ${tours}">
+            <td th:text="${tour.tourType.name()}">type</td>
+            <td th:text="${tour.office.office_address}">office</td>
+            <td th:text="${tour.night}">nights</td>
             <td>
-                <a th:href="@{/buro/{id}/delete(id=${buro.id})}">delete</a>
-                <a th:href="@{/buro/{id}/update(id=${buro.id})}">update</a>
+                <a th:href="@{/tour/{id}/delete(id=${tour.id})}">delete</a>
+                <a th:href="@{/tour/{id}/update(id=${tour.id})}">update</a>
             </td>
         </tr>
+
         </tbody>
     </table>
 </div>

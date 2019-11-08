@@ -22,7 +22,7 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public List<Hotel> findAllByStarsAndLocality(Integer stars, Locality locality) {
-        return hotelRepository.findAllByStarsAndLocality(stars, locality);
+        return hotelRepository.findAllByStarsAndLocality(stars, locality.getId());
     }
 
     @Override

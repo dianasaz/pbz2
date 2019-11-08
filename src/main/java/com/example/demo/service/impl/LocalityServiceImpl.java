@@ -4,10 +4,12 @@ import com.example.demo.entity.Locality;
 import com.example.demo.repository.LocalityRepository;
 import com.example.demo.service.LocalityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class LocalityServiceImpl implements LocalityService {
     private final LocalityRepository localityRepository;
 

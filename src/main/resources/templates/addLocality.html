@@ -16,23 +16,15 @@
     <div class="d-flex justify-content-center">
         <a class="btn btn-success pb-2" href="/">home</a>
     </div>
-    <form class="form-horizontal" th:object="${office}" method="post">
+    <form class="form-horizontal" th:object="${locality}" method="post">
         <div class="form-group">
-            <label class="control-label col-2" for="address">Address:</label>
+            <label class="control-label col-2" for="name">Name:</label>
             <div class="col-10">
-                <input type="text" class="form-control" id="address" th:field="*{office_address}"
-                       th:value="*{office_address} "
-                       placeholder="Enter address">
+                <input type="text" class="form-control" id="name" th:field="*{name}" th:value="*{name} "
+                       placeholder="Enter name">
             </div>
         </div>
-        <div class="form-group">
-            <label for="sel">Select buro:</label>
-            <select th:field="*{buro.id}" class="form-control" id="sel">
-                <option th:each="buro : ${buros}" th:value="${buro.id}" th:text="${buro.name}"
-                        th:selected="${office.buro.id == buro.id}">buro
-                </option>
-            </select>
-        </div>
+
         <div class="form-group">
             <div class="col-offset-2 col-10">
                 <button type="submit" class="btn btn-success">Add</button>

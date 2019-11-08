@@ -1,13 +1,16 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.Hotel;
 import com.example.demo.entity.TourInfo;
 import com.example.demo.repository.TourInfoRepository;
 import com.example.demo.service.TourInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class TourInfoServiceImpl implements TourInfoService {
     private final TourInfoRepository tourInfoRepository;
 
@@ -39,5 +42,10 @@ public class TourInfoServiceImpl implements TourInfoService {
     @Override
     public void deleteById(Integer id) {
         tourInfoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Hotel> findHotels() {
+        return tourInfoRepository.findHotels();
     }
 }

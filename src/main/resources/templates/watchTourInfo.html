@@ -16,29 +16,32 @@
         <a class="btn btn-success pb-2" href="/">home</a>
     </div>
     <div class="d-flex justify-content-center mt-1">
-        <a class="btn btn-success pb-2" href="/buro/add">add buro</a>
+        <a class="btn btn-success pb-2" href="/tourInfo/add">add tourInfo</a>
     </div>
-    <h2>Buro</h2>
+    <h2>TourInfo</h2>
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>FIO</th>
-            <th>Phone</th>
+            <th>Transport</th>
+            <th>Depart. point</th>
+            <th>Hotel</th>
+            <th>Tour</th>
+            <th>Price</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="buro : ${buros}">
-            <td th:text="${buro.name}">name</td>
-            <td th:text="${buro.address}">address</td>
-            <td th:text="${buro.fio}">fio</td>
-            <td th:text="${buro.phone}">phone</td>
+        <tr th:each="tour : ${tours}">
+            <td th:text="${tour.transport.name()}">transport</td>
+            <td th:text="${tour.departurePoint}">departure</td>
+            <td th:text="${tour.hotel.name} + ' ' + ${tour.hotel.stars}">stars</td>
+            <td th:text="${tour.tour.tourType.name()} + ' ' + ${tour.tour.night}">type</td>
+            <td th:text="${tour.price}">price</td>
             <td>
-                <a th:href="@{/buro/{id}/delete(id=${buro.id})}">delete</a>
-                <a th:href="@{/buro/{id}/update(id=${buro.id})}">update</a>
+                <a th:href="@{/tourInfo/{id}/delete(id=${tour.id})}">delete</a>
+                <a th:href="@{/tourInfo/{id}/update(id=${tour.id})}">update</a>
             </td>
         </tr>
+
         </tbody>
     </table>
 </div>
