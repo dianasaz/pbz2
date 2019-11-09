@@ -1,7 +1,6 @@
 package com.example.demo.controller.tourInfo;
 
 import com.example.demo.entity.Hotel;
-import com.example.demo.service.HotelService;
 import com.example.demo.service.TourInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +21,8 @@ public class SelectHotel {
 
     @GetMapping
     public String watch(Model model){
-        model.addAttribute("hotels", findAll());
+        List<Hotel> hotels = findAll();
+        model.addAttribute("hotels",hotels);
         return "watchHotelsFiveStars";
     }
 

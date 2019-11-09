@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface TourInfoRepository  extends JpaRepository<TourInfo, Integer> {
-    @Query(nativeQuery = true, value = "select distinct name, stars, locality_id from hotel join tour_info ti on hotel.id = ti.hotel_id where hotel.stars = 5")
+    @Query(value = "select new com.example.demo.entity.Hotel(h.id, h.name, h.stars, h.locality) from Hotel h join TourInfo ti on h.id = ti.hotel.id where h.stars = 5")
     List<Hotel> findHotels();
 }

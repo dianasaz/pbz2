@@ -64,6 +64,7 @@ public class AddTourInfo {
     public String saveNew(TourInfo tour){
         findTour(tour.getTour().getId()).ifPresent(tour::setTour);
         findHotel(tour.getHotel().getId()).ifPresent(tour::setHotel);
+        tour.setActualPrice(tour.getPrice());
         tourInfoService.save(tour);
         return "redirect:/";
     }

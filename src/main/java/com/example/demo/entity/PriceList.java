@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
 import java.util.Date;
 
 @Data
@@ -21,23 +22,17 @@ public class PriceList {
     @Column (name = "date_to")
     private Date dateTo;
 
-    @ManyToOne(cascade = {CascadeType.DETACH,
+    @OneToOne(cascade = {CascadeType.DETACH,
             CascadeType.MERGE,
             CascadeType.PERSIST,
             CascadeType.REFRESH})
-    @JoinColumn(name = "tour_id")
-    private Tour tour;
-
-    @ManyToOne(cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    @JoinColumn(name = "buro_id")
-    private Buro buro;
+    @JoinColumn(name = "office_id")
+    private Office office;
 
     @Column
-    @Digits(fraction = 1, integer = 1, message = "integer 1")
+    @Digits(fraction = 1, integer = 3, message = "integer 1")
+    @Max(2)
     @DecimalMin("0.1")
-    private Integer coefficient;
+    private Double coefficient;
 
 }

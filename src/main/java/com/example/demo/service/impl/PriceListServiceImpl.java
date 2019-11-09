@@ -1,13 +1,17 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.Office;
 import com.example.demo.entity.PriceList;
 import com.example.demo.repository.PriceListRepository;
 import com.example.demo.service.PriceListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PriceListServiceImpl implements PriceListService {
     private final PriceListRepository priceListRepository;
 
@@ -39,5 +43,10 @@ public class PriceListServiceImpl implements PriceListService {
     @Override
     public void deleteById(Integer id) {
         priceListRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<PriceList>  findLastByOfficeAndDate(Integer o, Date date) {
+        return priceListRepository.findLastByOfficeAndDate(o, date);
     }
 }

@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
@@ -11,6 +10,8 @@ import java.util.List;
 
 @Data
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "hotel")
 public class Hotel {
@@ -38,4 +39,11 @@ public class Hotel {
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TourInfo> tourInfoList;
+
+    public Hotel(Integer id, String name, Integer stars, Locality locality) {
+        this.id = id;
+        this.name = name;
+        this.stars = stars;
+        this.locality = locality;
+    }
 }

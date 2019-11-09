@@ -38,12 +38,12 @@ public class TourInfo {
 
     @Column
     @Digits(fraction = 0, integer = 5)
-    private Integer price;
+    private Double price;
 
-    @Transient
-    private Integer actualPrice;
+    @Column
+    private Double actualPrice;
 
-    public void getActualPrice(Integer coefficient) {
+    public void updateActualPrice(Double coefficient) {
         actualPrice = price * coefficient;
     }
 

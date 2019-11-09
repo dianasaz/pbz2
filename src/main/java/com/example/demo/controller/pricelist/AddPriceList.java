@@ -1,11 +1,11 @@
-package com.example.demo.controller.tour;
+package com.example.demo.controller.pricelist;
 
 import com.example.demo.entity.Buro;
 import com.example.demo.entity.Office;
-import com.example.demo.entity.Tour;
-import com.example.demo.entity.TourType;
+import com.example.demo.entity.PriceList;
+import com.example.demo.service.BuroService;
 import com.example.demo.service.OfficeService;
-import com.example.demo.service.TourService;
+import com.example.demo.service.PriceListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,26 +17,21 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping (value = "/tour/add")
-public class AddTour {
+@RequestMapping (value = "/priceList/add")
+public class AddPriceList {
     private final OfficeService officeService;
-    private final TourService tourService;
+    private final PriceListService priceListService;
     @Autowired
-    public AddTour(OfficeService officeService, TourService tourService) {
+    public AddPriceList(OfficeService officeService, PriceListService priceListService) {
         this.officeService = officeService;
-        this.tourService = tourService;
+        this.priceListService = priceListService;
     }
 
     @GetMapping
     public String add(Model model){
-        model.addAttribute("tour", new Tour());
-        model.addAttribute("types", findAll());
+        model.addAttribute("priceList", new PriceList());
         model.addAttribute("offices", findAllOffices());
-        return "addTour";
-    }
-
-    private TourType[] findAll(){
-        return TourType.values();
+        return "addPriceList";
     }
 
     private List<Office> findAllOffices(){
@@ -48,9 +43,9 @@ public class AddTour {
     }
 
     @PostMapping
-    public String saveNew(Tour tour){
-        findOffice(tour.getOffice().getId()).ifPresent(tour::setOffice);
-        tourService.save(tour);
+    public String saveNew(PriceList priceList){
+        findOffice(priceList.getOffice().getId()).ifPresent(priceList::setOffice);
+        priceListService.save(priceList);
         return "redirect:/";
     }
 

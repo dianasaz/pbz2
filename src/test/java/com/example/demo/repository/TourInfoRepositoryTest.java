@@ -70,12 +70,11 @@ public class TourInfoRepositoryTest {
         TourInfo tourInfo = new TourInfo();
         tourInfo.setHotel(hotel);
         tourInfo.setDeparturePoint("Departure Point");
-        tourInfo.setPrice(1234);
+        tourInfo.setPrice(1234.0);
         tourInfo.setTour(tour);
         tourInfo.setTransport(Transport.BUS);
         tourInfo.setId(tourInfoRepository.save(tourInfo).getId());
 
-        //buroRepository.findBuroByName("Name");
         Assert.assertEquals(2, officeRepository.findByBuro(buro).size());
     }
 }

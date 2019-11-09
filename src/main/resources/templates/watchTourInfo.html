@@ -35,7 +35,7 @@
             <td th:text="${tour.departurePoint}">departure</td>
             <td th:text="${tour.hotel.name} + ' ' + ${tour.hotel.stars}">stars</td>
             <td th:text="${tour.tour.tourType.name()} + ' ' + ${tour.tour.night}">type</td>
-            <td th:text="${tour.price}">price</td>
+            <td th:text="${tour.actualPrice}">price</td>
             <td>
                 <a th:href="@{/tourInfo/{id}/delete(id=${tour.id})}">delete</a>
                 <a th:href="@{/tourInfo/{id}/update(id=${tour.id})}">update</a>
