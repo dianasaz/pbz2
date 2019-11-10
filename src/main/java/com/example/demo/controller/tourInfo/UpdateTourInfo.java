@@ -32,7 +32,12 @@ public class UpdateTourInfo {
         model.addAttribute("tourInfo", getTour(id).orElse(new TourInfo()));
         model.addAttribute("hotels", findAll());
         model.addAttribute("tours", findAllTours());
+        model.addAttribute("transport", findTransport());
         return "addTourInfo";
+    }
+
+    private Transport[] findTransport(){
+        return Transport.values();
     }
 
     private List<Hotel> findAll(){

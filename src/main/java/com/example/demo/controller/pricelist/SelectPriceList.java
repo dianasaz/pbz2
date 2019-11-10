@@ -1,4 +1,4 @@
-package com.example.demo.controller.tour;
+package com.example.demo.controller.pricelist;
 
 import com.example.demo.entity.Office;
 import com.example.demo.entity.PriceList;
@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -35,8 +38,15 @@ public class SelectPriceList {
     }
 
     @PostMapping
-    public String getPriceList(Integer office_id, Model model) {
-        Optional<PriceList> pl = priceListService.findLastByOfficeAndDate(office_id, new Date());
+    public String getPriceList(Integer office_id, Model model, String date) {
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        Date d;
+        try {
+            d = format.parse(date);
+        } catch (ParseException e) {
+            return "redirect:/";
+        }
+        Optional<PriceList> pl = priceListService.findLastByOfficeAndDate(office_id, d);
         if (pl.isPresent()) {
             model.addAttribute("priceList", pl.get());
             return "watchPriceList";
