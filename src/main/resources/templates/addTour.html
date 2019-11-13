@@ -25,6 +25,11 @@
             </select>
         </div>
         <div class="form-group">
+            <div th:each="local : ${localitys}" class="checkbox">
+                <label><input th:text="${local.name}" type="checkbox" name="localitiesId" th:value="${local.id}"></label>
+            </div>
+        </div>
+        <div class="form-group">
             <label for="sel">Select office:</label>
             <select th:field="*{office.id}" class="form-control" id="se2">
                 <option th:each="office : ${offices}" th:value="${office.id}" th:text="${office.office_address}"

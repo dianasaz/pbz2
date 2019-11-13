@@ -5,6 +5,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import java.util.List;
 
 @Data
 @Entity
@@ -22,12 +23,8 @@ public class TourInfo {
     @JoinColumn(name = "tour_id")
     private Tour tour;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH,
-            CascadeType.MERGE,
-            CascadeType.PERSIST,
-            CascadeType.REFRESH})
-    @JoinColumn(name = "hotel_id")
-    private Hotel hotel;
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Hotel> hotels;
 
     @Column (name = "departure_point")
     private String departurePoint;
@@ -43,8 +40,12 @@ public class TourInfo {
     @Column
     private Double actualPrice;
 
+    public String getHotelNames(){
+        String s = "";
+        for (Hotel h : hotels) s+= " " + h.getName();
+        return s;
+    }
     public void updateActualPrice(Double coefficient) {
         actualPrice = price * coefficient;
     }
-
 }

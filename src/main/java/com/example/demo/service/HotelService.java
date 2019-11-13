@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface HotelService extends Service<Hotel> {
     List<Hotel> findAllByStarsAndLocality(Integer stars, Locality locality);
+
+    List<Hotel> findByLocality(Locality locality);
 }

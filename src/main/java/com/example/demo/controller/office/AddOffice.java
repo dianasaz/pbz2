@@ -42,7 +42,7 @@ public class AddOffice {
 
     @PostMapping
     public String saveNew(Office office){
-        findBuro(office.getBuro().getId()).ifPresent(office::setBuro);
+        //findBuro(office.getBuro().getId()).ifPresent(office::setBuro);
         officeService.save(office);
         return "redirect:/";
     }

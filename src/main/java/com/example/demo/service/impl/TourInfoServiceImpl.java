@@ -45,7 +45,7 @@ public class TourInfoServiceImpl implements TourInfoService {
     }
 
     @Override
-    public List<Hotel> findHotels() {
-        return tourInfoRepository.findHotels();
+    public List<Integer> findIdOfHotelsWithFiveStars() {
+        return tourInfoRepository.findIdOfHotelsWithFiveStars();
     }
 }

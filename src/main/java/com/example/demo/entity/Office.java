@@ -7,7 +7,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Data
-@ToString
 @Entity
 @Table(name = "office")
 public class Office {
@@ -29,4 +28,12 @@ public class Office {
 
     @OneToMany(mappedBy = "office", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Tour> tours;
+
+    @Override
+    public String toString() {
+        return "Office{" +
+                "id=" + id +
+                ", office_address='" + office_address + '\'' +
+                '}';
+    }
 }

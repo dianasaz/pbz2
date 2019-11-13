@@ -26,6 +26,11 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
+    public List<Hotel> findByLocality(Locality locality){
+        return hotelRepository.findByLocality(locality);
+    }
+
+    @Override
     public Hotel save(Hotel entity) {
         return hotelRepository.save(entity);
     }

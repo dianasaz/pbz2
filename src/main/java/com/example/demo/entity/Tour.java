@@ -23,6 +23,9 @@ public class Tour {
     @JoinColumn(name = "office_id")
     private Office office;
 
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    private List<Locality> localities;
+
     @Column
     @Digits(fraction = 0, integer = 2, message = "max is 21")
     @Max(21)
@@ -35,4 +38,10 @@ public class Tour {
 
     @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TourInfo> tourInfoList;
+
+    public String getLocalitiesName(){
+        String s = "";
+        for (Locality l : localities) s += " " + l.getName();
+        return s;
+    }
 }

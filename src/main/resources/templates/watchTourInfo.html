@@ -15,9 +15,6 @@
     <div class="d-flex justify-content-center">
         <a class="btn btn-success pb-2" href="/">home</a>
     </div>
-    <div class="d-flex justify-content-center mt-1">
-        <a class="btn btn-success pb-2" href="/tourInfo/add">add tourInfo</a>
-    </div>
     <h2>TourInfo</h2>
     <table class="table table-hover">
         <thead>
@@ -25,6 +22,7 @@
             <th>Transport</th>
             <th>Depart. point</th>
             <th>Hotel</th>
+            <th>Localities</th>
             <th>Tour</th>
             <th>Price</th>
         </tr>
@@ -33,7 +31,8 @@
         <tr th:each="tour : ${tours}">
             <td th:text="${tour.transport.name()}">transport</td>
             <td th:text="${tour.departurePoint}">departure</td>
-            <td th:text="${tour.hotel.name} + ' ' + ${tour.hotel.stars}">stars</td>
+            <td th:text="${tour.getHotelNames()}">stars</td>
+            <td th:text="${tour.tour.getLocalitiesName()}">localities</td>
             <td th:text="${tour.tour.tourType.name()} + ' ' + ${tour.tour.night}">type</td>
             <td th:text="${tour.actualPrice}">price</td>
             <td>

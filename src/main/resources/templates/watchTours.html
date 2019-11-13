@@ -25,6 +25,7 @@
             <th>Type</th>
             <th>Office</th>
             <th>Nights</th>
+            <th>Localities</th>
         </tr>
         </thead>
         <tbody>
@@ -32,9 +33,13 @@
             <td th:text="${tour.tourType.name()}">type</td>
             <td th:text="${tour.office.office_address}">office</td>
             <td th:text="${tour.night}">nights</td>
+            <td th:text="${tour.getLocalitiesName()}">loc</td>
             <td>
                 <a th:href="@{/tour/{id}/delete(id=${tour.id})}">delete</a>
                 <a th:href="@{/tour/{id}/update(id=${tour.id})}">update</a>
+            </td>
+            <td>
+                <a th:href="@{/tour/{id}/add/tourinfo(id=${tour.id})}">add tourInfo</a>
             </td>
         </tr>
 

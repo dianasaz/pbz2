@@ -6,5 +6,5 @@ import com.example.demo.entity.TourInfo;
 import java.util.List;
 
 public interface TourInfoService extends Service<TourInfo> {
-    List<Hotel> findHotels ();
+    List<Integer> findIdOfHotelsWithFiveStars();
 }

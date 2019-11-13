@@ -37,7 +37,7 @@ public class Hotel {
     @JoinColumn(name = "locality_id")
     private Locality locality;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REMOVE}, mappedBy = "hotels")
     private List<TourInfo> tourInfoList;
 
     public Hotel(Integer id, String name, Integer stars, Locality locality) {
@@ -45,5 +45,15 @@ public class Hotel {
         this.name = name;
         this.stars = stars;
         this.locality = locality;
+    }
+
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", stars=" + stars +
+                ", locality=" + locality +
+                '}';
     }
 }

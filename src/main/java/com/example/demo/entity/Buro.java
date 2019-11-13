@@ -8,7 +8,6 @@ import javax.validation.constraints.Digits;
 import java.util.List;
 
 @Data
-@ToString
 @Entity
 @Table(name = "buro")
 public class Buro {
