@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Data
@@ -19,10 +20,12 @@ public class PriceList {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank
     @Column (name = "date_from")
     @DateTimeFormat(pattern = "DD-MM-YYYY")
     private Date dateFrom;
 
+    @NotBlank
     @Column (name = "date_to")
     @DateTimeFormat(pattern = "DD-MM-YYYY")
     private Date dateTo;
@@ -34,6 +37,7 @@ public class PriceList {
     @JoinColumn(name = "office_id")
     private Office office;
 
+    @NotBlank
     @Column
     @Digits(fraction = 3, integer = 3, message = "integer 1")
     @Max(5)

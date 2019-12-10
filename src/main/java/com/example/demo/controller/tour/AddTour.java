@@ -7,10 +7,12 @@ import com.example.demo.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,7 +59,8 @@ public class AddTour {
     }
 
     @PostMapping
-    public String saveNew(Tour tour, Integer[] localitiesId) {
+    public String saveNew( Tour tour, Integer[] localitiesId, Errors errors) {
+        if (errors.hasErrors()) return "addTour";
         findOffice(tour.getOffice().getId()).ifPresent(tour::setOffice);
         if (localitiesId == null) {
             tour.setLocalities(new ArrayList<Locality>());

@@ -5,11 +5,13 @@ import com.example.demo.service.BuroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -32,7 +34,8 @@ public class UpdateBuro {
     }
 
     @PostMapping
-    public String update(Buro buro){
+    public String update( Buro buro, Errors errors){
+        if (errors.hasErrors()) return "addBuro";
         buroService.save(buro);
         return "redirect:/";
     }

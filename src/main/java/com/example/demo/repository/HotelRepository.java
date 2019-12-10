@@ -11,8 +11,4 @@ import java.util.List;
 
 @Repository
 public interface HotelRepository extends JpaRepository<Hotel, Integer> {
-    @Query(nativeQuery = true, value = "SELECT * FROM hotel WHERE hotel.stars = :stars AND hotel.locality_id = :locality")
-    List<Hotel> findAllByStarsAndLocality(@Param("stars") Integer stars, @Param("locality") Integer locality);
-
-    List<Hotel> findByLocality(Locality locality);
 }

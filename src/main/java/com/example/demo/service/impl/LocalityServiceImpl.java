@@ -19,11 +19,6 @@ public class LocalityServiceImpl implements LocalityService {
     }
 
     @Override
-    public Locality findLocalityByName(String name) {
-        return localityRepository.findLocalityByName(name);
-    }
-
-    @Override
     public Locality save(Locality entity) {
         return localityRepository.save(entity);
     }

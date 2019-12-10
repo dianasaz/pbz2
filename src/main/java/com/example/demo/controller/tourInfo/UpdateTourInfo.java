@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,7 +54,7 @@ public class UpdateTourInfo {
     }
 
     @PostMapping
-    public String update(TourInfo tourInfo){
+    public String update( TourInfo tourInfo){
         tourInfoService.save(tourInfo);
         return "redirect:/";
     }

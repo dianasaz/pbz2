@@ -19,17 +19,6 @@ public class HotelServiceImpl implements HotelService {
         this.hotelRepository = hotelRepository;
     }
 
-
-    @Override
-    public List<Hotel> findAllByStarsAndLocality(Integer stars, Locality locality) {
-        return hotelRepository.findAllByStarsAndLocality(stars, locality.getId());
-    }
-
-    @Override
-    public List<Hotel> findByLocality(Locality locality){
-        return hotelRepository.findByLocality(locality);
-    }
-
     @Override
     public Hotel save(Hotel entity) {
         return hotelRepository.save(entity);

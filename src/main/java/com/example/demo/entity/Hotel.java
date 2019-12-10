@@ -3,13 +3,10 @@ package com.example.demo.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -19,6 +16,7 @@ public class Hotel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank
     @Column
     private String name;
 

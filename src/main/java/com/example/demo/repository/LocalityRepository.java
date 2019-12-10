@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LocalityRepository  extends JpaRepository<Locality, Integer> {
-    Locality findLocalityByName(String name);
 }

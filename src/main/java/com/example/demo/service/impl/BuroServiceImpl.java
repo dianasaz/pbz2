@@ -19,11 +19,6 @@ public class BuroServiceImpl implements BuroService {
     }
 
     @Override
-    public Buro findBuroByName(String name) {
-        return buroRepository.findBuroByName(name);
-    }
-
-    @Override
     public Buro save(Buro entity) {
         return buroRepository.save(entity);
     }

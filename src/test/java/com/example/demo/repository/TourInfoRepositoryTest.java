@@ -75,6 +75,6 @@ public class TourInfoRepositoryTest {
         tourInfo.setTransport(Transport.BUS);
         tourInfo.setId(tourInfoRepository.save(tourInfo).getId());
 
-        //Assert.assertEquals(2, officeRepository.findByBuro(buro).size());
+        Assert.assertEquals(2, officeRepository.findByBuro(buro).size());
     }
 }

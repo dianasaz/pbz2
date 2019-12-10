@@ -43,7 +43,7 @@
             <label >Select hotels:</label>
             <div class="form-group">
                 <div th:each="hotel : ${hotels}" class="checkbox">
-                    <label><input th:text="${hotel.name}" type="checkbox" th:if="${tour.getLocalities().contains(hotel.locality)}" name="hotelsId" th:value="${hotel.id}"></label>
+                    <label><input th:text="${hotel.name}" type="checkbox" name="hotelsId" th:value="${hotel.id}"></label>
                 </div>
             </div>
         </div>

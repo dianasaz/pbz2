@@ -5,6 +5,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Data
@@ -26,6 +27,7 @@ public class TourInfo {
     @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private List<Hotel> hotels;
 
+    @NotBlank
     @Column (name = "departure_point")
     private String departurePoint;
 

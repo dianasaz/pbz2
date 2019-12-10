@@ -8,11 +8,13 @@ import com.example.demo.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,13 +42,18 @@ public class AddTourInfo {
         tourInfo.setTour(findTour(id));
         model.addAttribute("tourInfo", tourInfo);
         model.addAttribute("tour", findTour(id));
-        model.addAttribute("hotels", findHotels());
+        model.addAttribute("hotels", findHotels(id));
         model.addAttribute("transport", findTransport());
         return "addTourInfo";
     }
 
-    private List<Hotel> findHotels(){
-        return hotelService.findAll();
+    private List<Hotel> findHotels(Integer id){
+        Tour tour = findTour(id);
+        List<Hotel> hotels = new ArrayList<>();
+        for (Locality l : tour.getLocalities()){
+            hotels.addAll(l.getHotels());
+        }
+        return hotels;
     }
 
     private Transport[] findTransport(){
@@ -63,7 +70,8 @@ public class AddTourInfo {
     }
 
     @PostMapping
-    public String saveNew(TourInfo tour, Integer[] hotelsId){
+    public String saveNew( TourInfo tour, Integer[] hotelsId, Errors errors){
+        if (errors.hasErrors()) return "addTourInfo";
         findTourOptional(tour.getTour().getId()).ifPresent(tour::setTour);
         tour.setActualPrice(tour.getPrice());
         if (hotelsId == null) {

@@ -8,6 +8,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BuroRepository extends JpaRepository<Buro, Integer> {
-    @Query(nativeQuery = true, value = "select * from buro where buro.name = :name")
-    Buro findBuroByName (@Param("name") String name);
 }

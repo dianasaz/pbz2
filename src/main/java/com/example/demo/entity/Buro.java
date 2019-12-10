@@ -5,6 +5,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Data
@@ -15,15 +16,19 @@ public class Buro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank
     @Column(unique = true)
     private String name;
 
+    @NotBlank
     @Column
     private String address;
 
+    @NotBlank
     @Column
     private String fio;
 
+    @NotBlank
     @Column
     @Digits(fraction = 0, integer = 9, message = "9 integer")
     private Integer phone;
